@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 2</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+</head>
+<body>
+    <div id="mymap" style="height: 800px;">
+
+    </div>
+    <script type="text/javascript">
+        //basemap - center point is Konju Univ.
+        var map = L.map('mymap', {
+            center: [36.4695695,127.1410842],
+            zoom: 16
+        });
+
+        //tile layer - OSM
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 18,
+            minZoom: 4
+        }).addTo(map);
+
+        var universityIcon = L.icon({
+            iconUrl: 'university.png', // url that links to the icon image file
+            iconSize:     [38, 38], // size of the icon image in pixels
+            iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+            popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+        });
+
+        //marker
+        //location - GIS and Physical Geography Lab
+        var marker1 = L.marker([36.4665597,127.1393243], {icon: universityIcon}).addTo(map);
+        //location - Cloud and Atmospheric Physics Lab
+        var marker2 = L.marker([36.4710597,127.1447000], {icon: universityIcon}).addTo(map);
+
+        //popup with text
+        // marker1.bindPopup("GIS and Physical Geography Lab");
+        // marker2.bindPopup("Cloud and Atmospheric Physics Lab");
+
+        //pop with image
+        var pic1 = '<img src="https://baekje.kongju.ac.kr/sites/M00142/images/greeting-02.jpg" width="200">';
+        var pic2 = '<img src="https://obj-sg.thewiki.kr/data/eab3b5eca3bceb8c80ec9e90ec97b0eb8c80eab4802e6a7067.jpg" alt="FSU" width="250">';
+        marker1.bindPopup('<p style="color:blue; font-weight:bold"> GIS and Physical Geography Lab </p>'+pic1);
+        marker2.bindPopup('<p style="color:seagreen; font-weight:bold"> Cloud and Atmospheric Physics Lab </p>'+pic2);
+
+    </script>
+</body>
+</html>
