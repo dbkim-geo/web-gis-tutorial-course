@@ -75,8 +75,9 @@ REFERENCE - https://neiugis.github.io/lab1/
             : 이외에도 다양한 타일 레이어를 사용하고 싶다면, https://wiki.openstreetmap.org/wiki/Tile_servers 에서 확인해보자.
 
 3. GeoJSON 레이어 준비 및 추가
-    ㅁ GeoJSON 레이어를 추가하기 위하여, 해당 파일을 구득하여보자.
+    ㅁ GeoJSON 레이어를 추가하기 위하여, 파일을 구득하여보자.
         - 공간정보와 속성정보가 있는 데이터(일단은 가볍게 shp로)를 다운받자.
+            : 여기서는 RCP 8.5 시나리오에서 2100년의 남한 시군구 단위의 자료를 가져왔다.
         - QGIS를 사용해서 해당 데이터를 확인하며 심볼 조정으로 단계구분도의 기준 값을 잡아보자.
         - 기준 값들을 확인하였으면, 이제 다른 이름으로 저장하여 파일 포맷을 GeoJSON으로 저장하자.
     ㅁ GeoJSON 파일을 JS에 담아보자.
@@ -88,6 +89,8 @@ REFERENCE - https://neiugis.github.io/lab1/
 4. 색 조정
     ㅁ 속성 값을 기준으로 색을 정해보자.
         - 웹에다가 GeoJSON을 올리는 것을 성공했으니, 이제 feature 마다 색을 다르게 정해보자.
+            : 여기서 사용된 GeoJSON의 컬럼명은 다음과 같다.
+            : adminNam(시군구 한글명), Tmax(최고기온), Tmin(최저기온), Tavg(평균기온), HWD(폭염일수), TND(열대야일수), CWD(한파일수)
         - 단계구분도 제작을 위해서 QGIS에서 확인한 속성 값 기준으로 색상을 부여해보자.
         - 색상은 개인취향인데 나는 https://colorbrewer2.org/ 여기서 많이 참고한다.
     ㅁ JS 함수를 사용하여 표출 해보자.
@@ -101,6 +104,11 @@ REFERENCE - https://neiugis.github.io/lab1/
         - body의 script 섹션에 (GeoJSON 레이어 뒤에) 범례를 추가해보자.
 
 6. 마우스 효과 추가
-    ㅁ 마우스를 해당 feature에 올리면 강조되는 효과를 추가해보자.
-        - GeoJSON 레이어 전에 소스를 넣자.
-        
+    ㅁ 마우스를 해당 feature에 올리면 강조 혹은 삭제되는 효과를 추가해보자.
+        - JS에서 geoJson 레이어 전에 소스를 넣자.
+    ㅁ geoJson 레이어 소스를 수정한다.
+
+7. 툴팁 추가
+    ㅁ SECTION2에서 사용했던 bindPopup 방식을 사용해보자.
+        -geoJson 레이어 소스를 수정한다.
+            : 필드 명에 유의하자.
